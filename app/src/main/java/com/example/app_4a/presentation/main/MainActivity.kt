@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.login.observe(this, Observer {
             when(it){
-                is LoginSuccess -> {
+                is LoginSuccess -> {//TODO allez sur une new activity
 
                 }
                 is LoginError -> {
