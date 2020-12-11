@@ -8,6 +8,7 @@ import com.example.app_4a.data.repository.local.DatabaseDao
 import com.example.app_4a.domain.n1.usecase.CreateUserUseCase
 import com.example.app_4a.domain.n1.usecase.GetUserUseCase
 import com.example.app_4a.presentation.main.MainViewModel
+import com.example.app_4a.presentation.main.SecondViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -23,6 +24,10 @@ val domainModule = module {
 val dataModule = module {
     single { UserRepository(get()) }
     single { createDataBase(androidContext()) }
+}
+
+val secondModule = module{
+    factory { SecondViewModel()}
 }
 
 fun createDataBase(context: Context): DatabaseDao {

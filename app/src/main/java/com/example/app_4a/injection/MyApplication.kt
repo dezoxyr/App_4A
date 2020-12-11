@@ -12,7 +12,7 @@ class MyApplication : Application() {
             //android context
             androidContext(this@MyApplication)
             //modules
-            modules(presentationModule, domainModule, dataModule)
+            modules(presentationModule, domainModule, dataModule, secondModule)
         }
     }
 }

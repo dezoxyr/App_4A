@@ -1,5 +1,6 @@
 package com.example.app_4a.presentation.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -18,8 +19,9 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.login.observe(this, Observer {
             when(it){
-                is LoginSuccess -> {//TODO allez sur une new activity
-
+                is LoginSuccess -> {
+                    val intent = Intent(this, SecondActivity::class.java)
+                    startActivity(intent)
                 }
                 is LoginError -> {
                     MaterialAlertDialogBuilder(this)
