@@ -19,6 +19,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    dataBinding{
+        enabled = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -35,6 +39,7 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     def koin_version = '2.1.6'
     def room_version = "2.2.5"
 
@@ -52,6 +57,10 @@ dependencies {
     implementation "com.google.android.material:material:1.2.1"
 
     implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    // For control over item selection of both touch and mouse driven selection
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc03"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'
