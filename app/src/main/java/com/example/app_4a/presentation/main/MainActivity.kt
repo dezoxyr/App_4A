@@ -35,10 +35,14 @@ class MainActivity : AppCompatActivity() {
             }
         })
         login_button.setOnClickListener{
-            mainViewModel.onClickLogin(login_edit.text.toString().trim(), password_edit.text.toString())
+            if(!login_edit.text.toString().trim().equals("")&&!password_edit.text.toString().equals("")) {
+                mainViewModel.onClickLogin(login_edit.text.toString().trim(), password_edit.text.toString())
+            }
         }
         create_button.setOnClickListener{
-            mainViewModel.onClickCreate(login_edit.text.toString().trim(), password_edit.text.toString())
+            if(!login_edit.text.toString().trim().equals("")&&!password_edit.text.toString().equals("")) {
+                mainViewModel.onClickCreate(login_edit.text.toString().trim(), password_edit.text.toString())
+            }
         }
     }
 }

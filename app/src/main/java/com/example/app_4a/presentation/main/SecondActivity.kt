@@ -23,17 +23,20 @@ class SecondActivity : AppCompatActivity(){
 
         url_button.setOnClickListener {
             val image = url_edit.text.toString().trim()
-            if(image != null || image != "") {
+            var cont : Boolean = false
+            if(!image.equals("")) {
                 secondViewModel.runAPI("https://trace.moe/api/search?url=" + image)
+                cont = true
             }
 
-            while (true) {
+            while (cont) {
                 if(secondViewModel.flag) {
                     recycler = findViewById(R.id.list_recycler_view)
                     recycler.layoutManager = LinearLayoutManager(this)
                     recycler.adapter = RecyclerViewAdaptater(secondViewModel.test.toTypedArray())
                     break
                 }
+
             }
         }
 

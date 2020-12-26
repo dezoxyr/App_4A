@@ -12,6 +12,7 @@ class SecondViewModel(): ViewModel() {
     var flag : Boolean = false
 
     fun runAPI(url: String){
+        flag = false
         val request = Request.Builder()
                 .url(url)
                 .build()
@@ -23,21 +24,21 @@ class SecondViewModel(): ViewModel() {
 
             override fun onResponse(call: Call, response: Response){
                 val rep = response.body()?.string()
-                val json1 = JSONObject(JSONObject(rep).getJSONArray("docs").getString(0))
-                val episode = json1.get("episode")
-                val jTitle = json1.get("title_romaji")
-                val eTitle =  json1.get("title_english")
-                val similarity = json1.get("similarity")
-
-                test.add("Romaji title : "+jTitle.toString())
-                test.add("English title : "+eTitle.toString())
-                test.add("Similarity : "+similarity.toString())
-                test.add("Episode : "+episode.toString())
-                flag = true
-                println(json1)
-                println(episode)
-                println(similarity)
-                println("debug");
+                val code = response.code().toString()
+                if(code.equals("200")) {
+                    val json1 = JSONObject(JSONObject(rep).getJSONArray("docs").getString(0))
+                    val episode = json1.get("episode")
+                    val jTitle = json1.get("title_romaji")
+                    val eTitle = json1.get("title_english")
+                    val similarity = json1.get("similarity")
+                    test.clear()
+                    test.add("Romaji title : " + jTitle.toString())
+                    test.add("English title : " + eTitle.toString())
+                    test.add("Similarity : " + similarity.toString())
+                    test.add("Episode : " + episode.toString())
+                    flag = true
+                    println(json1)
+                }
             }
         })
     }
